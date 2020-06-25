@@ -1,5 +1,4 @@
 let computer = ["rock", "paper", "scissors"]
-let choices = ["rock", "papar", "scissors"]
 let compIndex = 0
 // what does this do?
 // understands what the player is selecting, when clicked compare the user selection to the computer selection
@@ -8,6 +7,7 @@ function play(playerChoice) {
   if (playerChoice == "rock" && computer[compIndex] == "rock") {
     pRockElem()
     cRockElem()
+    isTie()
     console.log("it is a tie");
   }
   else if (playerChoice == "rock" && computer[compIndex] == "scissors") {
@@ -30,6 +30,7 @@ function play(playerChoice) {
   else if (playerChoice == "paper" && computer[compIndex] == "paper") {
     pPaperElem()
     cPaperElem()
+    isTie()
     console.log("It is a tie");
   }
   else if (playerChoice == "paper" && computer[compIndex] == "scissors") {
@@ -53,6 +54,7 @@ function play(playerChoice) {
   else if (playerChoice == "scissors" && computer[compIndex] == "scissors") {
     pScissorElem()
     cScissorElem()
+    isTie()
     console.log("It is a tie");
   }
 
@@ -93,21 +95,34 @@ function computerChoice() {
 }
 
 function playerWins() {
+
   let playerWinner = document.getElementById("play")
+  let computerLooses = document.getElementById("com")
+  playerWinner.removeAttribute("class")
+  computerLooses.removeAttribute("class")
   playerWinner.innerText = "Player Wins!"
   playerWinner.classList.add("text-success")
-  let computerLooses = document.getElementById("com")
   computerLooses.innerText = "Computer Looses!"
   computerLooses.classList.add("text-danger")
 }
 
 function computerWins() {
   let computerWinner = document.getElementById("com")
-  computerWinner.innerText = "Clayer Wins!"
+  let playerLooses = document.getElementById("play")
+  playerLooses.removeAttribute("class")
+  computerWinner.removeAttribute("class")
+  computerWinner.innerText = "Computer Wins!"
   computerWinner.classList.add("text-success")
-  let playerLooses = document.getElementById("com")
   playerLooses.innerText = "Player Looses!"
   playerLooses.classList.add("text-danger")
+}
+function isTie() {
+  let computerTie = document.getElementById("com")
+  let playerTie = document.getElementById("play")
+  computerTie.innerText = "It is a tie"
+  computerTie.removeAttribute("class")
+  playerTie.innerText = "it is a tie"
+  playerTie.removeAttribute("class")
 }
 
 // create a function that decides the winner with if else statements
